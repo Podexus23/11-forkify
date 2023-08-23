@@ -1,5 +1,5 @@
 import { async } from 'regenerator-runtime';
-import { API_URL, api_key } from './config.js';
+import { API_URL, RES_PER_PAGE, api_key } from './config.js';
 import { getJSON } from './helpers.js';
 
 const api_key = `d5dc34bb-1546-4f27-a4eb-e070224fd794`;
@@ -9,6 +9,8 @@ export const state = {
   search: {
     query: ``,
     results: [],
+    resultsPerPage: RES_PER_PAGE,
+    page: 1,
   },
 };
 
@@ -26,7 +28,6 @@ export const loadRecipe = async function (id) {
       cookingTime: recipe.cooking_time,
       ingredients: recipe.ingredients,
     };
-    console.log(state.recipe);
   } catch (error) {
     console.error(`model error: ${error} 💥`);
     throw error;
@@ -50,4 +51,11 @@ export const loadSearchResults = async function (query) {
     console.log(`${err} error in search 💥💥`);
     throw new Error(error);
   }
+};
+
+export const getSearchResultsPage = function (page = state.search.page) {
+  state.search.page = page;
+  let start = (page - 1) * state.search.resultsPerPage;
+  let end = page * state.search.resultsPerPage;
+  return state.search.results.slice(start, end);
 };
