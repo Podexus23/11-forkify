@@ -39,16 +39,25 @@ const controlSearchResults = async function () {
     // 2) Load search results
     await model.loadSearchResults(query);
     // 3) Render results
-    resultsView.render(model.getSearchResultsPage(3));
+    resultsView.render(model.getSearchResultsPage());
     paginationView.render(model.state.search);
   } catch (error) {
     console.log(error);
   }
 };
 
+const controlPagination = function (goToPage) {
+  // Render new results
+  resultsView.render(model.getSearchResultsPage(goToPage));
+
+  // render new pagination buttons
+  paginationView.render(model.state.search);
+};
+
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
   searchView.addHandlerSearch(controlSearchResults);
+  paginationView.addHandlerClick(controlPagination);
 };
 init();
 // window.addEventListener('hashchange', showRecipe);
