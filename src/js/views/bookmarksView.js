@@ -19,3 +19,5 @@ class BookmarksView extends View {
 }
 
 export default new BookmarksView();
+
+//commit to remove. sry AC6 is pretty good)
