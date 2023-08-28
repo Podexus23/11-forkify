@@ -1,7 +1,6 @@
 import { API_URL, RES_PER_PAGE, api_key } from './config.js';
 import { AJAX } from './helpers.js';
 
-const api_key = `d5dc34bb-1546-4f27-a4eb-e070224fd794`;
 
 export const state = {
   recipe: {},
