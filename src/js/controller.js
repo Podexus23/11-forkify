@@ -1,4 +1,4 @@
-import 'regenerator-runtime';
+// import 'regenerator-runtime';
 import 'core-js/stable';
 
 import * as model from './model.js';
@@ -121,7 +121,6 @@ const init = function () {
   recipeView.addHandlerUpdateServings(controlServings);
   recipeView.addHandlerAddBookmark(controlAddBookmark);
   searchView.addHandlerSearch(controlSearchResults);
-  paginationView.addHandlerClick(controlPagination);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
 };
